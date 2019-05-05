@@ -1,0 +1,151 @@
+<!-- <input type="search" placeholder="Enter keywords" name="repoInput">
+<button class="btn btn-success col-sm-2 ml-4" type="submit" (click)="getRepos()">Search
+  
+<input type="text" placeholder="Enter Github User" name="userName" (keyup)="getUsers()"> -->
+
+
+<div class="container">
+  
+    <!-- SEARCH GITHUB REPOSITORIES -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="mt-5 mb-5">Repository Search</h1>
+        <form class="form-inline">
+          <input class="form-control col-sm-9 mr-5" type="search" placeholder="Enter keywords" name="repoInput" [(ngModel)]="repoInput">
+          <button class="btn btn-success col-sm-2 ml-4" type="submit" (click)="getRepo()">Search
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="repoSearch">
+      <div class="mt-3">
+        <div *ngFor="let repos of repoSearch">
+          <div class="card mb-3">
+            <!-- card-header -->
+            <div class="card-header">
+              {{ repos.full_name }}
+            </div>
+            <!-- card-body -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <strong>Created by: </strong>{{ repos.owner.login }}
+                    </li>
+                    <li class="list-group-item">
+                      <strong>Last updated at: </strong>{{ repos.updated_at | date:'mediumDate' }}
+                    </li>
+                    <li class="list-group-item">
+                      <a href="{{ repos.owner.html_url }}" target="_blank">User Profile</a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="{{ repos.html_url }}">Repo Link</a>
+                    </li>
+                    <li class="list-group-item">
+                      <strong>Forks: </strong>{{ repos.forks }}
+                    </li>
+                  </ul>
+                </div>
+              </div>        
+            </div><!-- /.card-body -->
+      
+          </div><!-- /.card -->
+        </div><!--  *ngFor -->
+      </div><!-- /.col-sm-12 -->
+    </div><!-- *ngIf="search_repos" -->
+    
+    <!-- SEARCH GITHUB USERS -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="mt-5 mb-5">
+          <h1 class="mt-2 mb-2">Github Search</h1>
+          <form>
+            <input type="text" class="form-control" placeholder="Enter Github User" 
+            name="userName"
+            [(ngModel)]="userName"
+            (keyup)="getUsers()">
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="users">
+  
+      <div class="card">
+        <!-- card-header -->
+        <div class="card-header">
+          <!-- {{ users.name }} -->
+        </div>
+        <!-- card-body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="{{ users.avatar_url }}" alt="{{ users.name }}" class="img-fluid">
+              <a href="{{ users.html_url }}" target="_blank" class="btn btn-info btn-block mt-3 mb-3">View Profile</a>
+            </div>
+            <div class="col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <strong>Username: </strong>{{ users.login }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Location: </strong>{{ users.location }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Bio: </strong>{{ users.bio }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Member Since: </strong>{{ users.created_at | date:'mediumDate' }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Blog: </strong><a href="{{ users.blog }}" target="_blank">{{ users.blog }}</a>
+                </li>
+                <li class="list-group-item">
+                  <a target="_blank" class="btn btn-info" (click)="getRepos()">Get Repos</a>
+                </li>
+              </ul>
+            </div>
+          </div>        
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+  
+      <!-- GET GITHUB USER REPOSITORIES -->
+      <div *ngIf="repos">
+        <div class="mt-3">
+          <div class="card">
+            <!-- card-header -->
+            <div class="card-header">
+              Repos of {{ users.name }}
+            </div>
+            <div *ngFor="let repo of repos">
+              <!-- card-body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <h5>
+                      <a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
+                    </h5>
+                    <p>{{ repo.description }}</p>
+                    <p>Last updated: {{ repo.updated_at | date:'medium' }}</p>
+                  </div>
+                  <div class="col-sm-3">
+                      <div class="stats">
+                        <span class="badge badge-primary">
+                          Size: {{ repo.size }} KB
+                        </span>
+                        <span class="badge badge-secondary">
+                          {{ repo.forks }} Forks
+                        </span>
+                      </div>
+                  </div>
+                </div>        
+              </div><!-- /.card-body -->
+            </div>      
+          </div><!-- /.card -->
+        </div><!-- /.col-sm-12 -->
+      </div><!--  *ngIf="repo_list" -->
+  
+    </div><!--  *ngIf="user_profile" -->
+  </div>
