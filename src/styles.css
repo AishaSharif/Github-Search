@@ -5,3 +5,11 @@ body{
 .container{
   width: 50%
 }
+a.navitem {
+  font-size: 160%;
+  margin-top: 15px;
+  margin-bottom: 11px;
+}
+.container-nav{
+  margin-top: 30px;
+}

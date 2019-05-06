@@ -26,13 +26,13 @@ export class UserService {
   }
 
   getUser(userName){
-    let userLink = this.userUrl + this.userName 
+    let userLink = this.userUrl + this.userName + "?access_token=" + this.accessToken
     this.userName = userName
     return this.http.get(userLink)
   }
   getRepo(userName){
     this.userName = userName
-    let repoLink = this.userUrl + this.userName + '/repos'
+    let repoLink = this.userUrl + this.userName + '/repos' + "?access_token=" + this.accessToken
     return this.http.get(repoLink)
   }
 }

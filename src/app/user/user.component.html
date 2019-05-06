@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 mt-5 mb-5">
-      <h3 class="mt-5 mb-4 text-center"> Search Github Users </h3>
+    <div class="col-sm-12 mb-5">
+      <h2 class="mt-5 mb-4 text-center"> Search Github Users </h2> 
       <form>
         <input type="text" class="form-control" placeholder="Search Github User" 
         name="userName"
@@ -10,12 +10,10 @@
       </form>
     </div>
   </div>
-  
   <!-- ========================= -->
-
   <div *ngIf="users">
     <div class="row">
-    <div class="col-sm-8">
+      <div class="col-sm-8">
         <ul class="list-group mb-4">
           <li class="list-group-item">
             <strong>Username: </strong>{{ users.login }}
@@ -43,15 +41,17 @@
       </div>
       <div class="col-sm-4">
         <img src="{{ users.avatar_url }}" alt="{{ users.name }}" class="img-fluid">
-        <a href="{{ users.html_url }}" target="_blank" class="btn btn-outline-primary mt-3 mb-2">View Profile</a>
-        <a target="_blank" class="btn btn-outline-primary" (click)="getRepos()">Get Repos</a>
+        <a href="{{ users.html_url }}" target="_blank" class="btn btn-outline-primary mt-3 mb-2">Go to Github Profile</a>
+        <a target="_blank" class="btn btn-outline-primary" (click)="getRepos()">View Repos</a>
       </div>
     </div>   
 
 <!-- ======================= -->
 
     <div *ngIf="repos" class="mt-8">
-      <strong class="mt-5"> REPOS OF {{ users.name | uppercase}} </strong>
+      <strong class="mt-5"> 
+        <h4>REPOS OF {{ users.name | uppercase}}</h4>
+      </strong>
       <div *ngFor="let repo of repos" class="mb-4 mt-1">
         <ul class="list-group">
           <li class="list-group-item">
@@ -72,41 +72,5 @@
         </ul>
       </div>
     </div>
-  
-      <div *ngIf="repos">
-        <div class="mt-3">
-          <div class="card">
-            <!-- card-header -->
-            <div class="card-header">
-              Repos of {{ users.name }}
-            </div>
-            <div *ngFor="let repo of repos">
-              <!-- card-body -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-9">
-                    <h5>
-                      <a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
-                    </h5>
-                    <p>{{ repo.description }}</p>
-                    <p>Last updated: {{ repo.updated_at | date:'medium' }}</p>
-                  </div>
-                  <div class="col-sm-3">
-                      <div class="stats">
-                        <span class="badge badge-primary">
-                          Size: {{ repo.size }} KB
-                        </span>
-                        <span class="badge badge-secondary">
-                          {{ repo.forks }} Forks
-                        </span>
-                      </div>
-                  </div>
-                </div>        
-              </div><!-- /.card-body -->
-            </div>      
-          </div><!-- /.card -->
-        </div><!-- /.col-sm-12 -->
-      </div><!--  *ngIf="repo_list" -->
-  
-    </div><!--  *ngIf="user_profile" -->
+  </div>
   </div>
