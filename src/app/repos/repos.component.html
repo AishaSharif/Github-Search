@@ -1,3 +1,37 @@
-<p>
-  repos works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center mb-3 mt-5">Repository Search</h2>
+        <form class="form-inline">
+          <input class="col-sm-12 mb-3 form-control col-sm-9 mr-5" type="search" placeholder="Search Repository" name="repoInput" [(ngModel)]="repoInput">
+          <button class="mx-auto btn btn-primary col-sm-2 ml-5" type="submit" (click)="getRepo()">Search
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="repoSearch">
+      <div *ngFor="let repos of repoSearch">
+          <ul class="list-group mt-4 mb-4">
+            <img src="{{repos.owner.avatar}}" alt="">
+            <li class="list-group-item">
+              <strong>Full Name: </strong>
+              {{repos.full_name}}
+            </li>
+            <li class="list-group-item">
+              <strong>Description: </strong>{{ repos.description }}
+            </li>
+            <li class="list-group-item">
+              <strong>Last updated: </strong>{{ repos.updated_at | date }}
+            </li>
+            <li class="list-group-item">
+              <strong>Stars: </strong>{{ repos.stargazers_count }}
+            </li>
+            <li class="list-group-item">
+                <strong>Repo Url:</strong>
+                <a href="{{ repos.html_url }}"> View repo on github </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+</div>
