@@ -17,10 +17,12 @@ export class ReposComponent implements OnInit {
   getRepo(){
     if (this.repoInput === '') {
       this.repoSearch = false;
+      alert('input field cannot be empty')
+    } else {
+      this.userService.searchRepo(this.repoInput).subscribe(data=>{
+        this.repoSearch = data['items']
+      })
     }
-    this.userService.searchRepo(this.repoInput).subscribe(data=>{
-      this.repoSearch = data['items']
-    })
   }
 
   ngOnInit() {

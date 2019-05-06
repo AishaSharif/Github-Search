@@ -50,7 +50,7 @@
 
     <div *ngIf="repos" class="mt-8">
       <strong class="mt-5"> 
-        <h4>REPOS OF {{ users.name | uppercase}}</h4>
+        <h4>Repos Of {{ users.name | capitalize}}</h4>
       </strong>
       <div *ngFor="let repo of repos" class="mb-4 mt-1">
         <ul class="list-group">

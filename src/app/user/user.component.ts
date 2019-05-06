@@ -16,23 +16,15 @@ export class UserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  getRepo(){
-    this.userService.searchRepo(this.repoInput).subscribe(data=>{
-      this.repoSearch = data['items']
-    })
-  }
-
   getUsers(){
     this.userService.getUser(this.userName).subscribe(data=>{
       this.users = data
-      // console.log(this.users)
     })
   }
 
   getRepos(){
     this.userService.getRepo(this.userName).subscribe(data=>{
       this.repos = data
-      // console.log(this.repos)
     })
   }
   

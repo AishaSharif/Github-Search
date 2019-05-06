@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReposComponent } from './repos/repos.component';
+import { HighlightDirective } from './highlight.directive';
+import { CapitalizePipe } from './capitalize.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     NotFoundComponent,
-    ReposComponent
+    ReposComponent,
+    HighlightDirective,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
