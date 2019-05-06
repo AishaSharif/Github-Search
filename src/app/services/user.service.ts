@@ -20,6 +20,8 @@ export class UserService {
   searchRepo(repoName){
     let searchRepoLink = this.repoUrl + this.repoName
     this.repoName = repoName
+    
+    let promise =new Promise((resolve,reject)=>{})
     return this.http.get(searchRepoLink)
   }
 
