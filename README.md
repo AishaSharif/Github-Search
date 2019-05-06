@@ -1,10 +1,10 @@
 # GithubSearch
 This is a website where users may enter a GitHub username into a form, submit it, and see names and descriptions of that person's public repositories
 
-##Getting Started
+## Getting Started
 Clone this repo using the link in the search bar. Open with preferred code editor
 
-##Author
+## Author
 Aisha Sharif
 
 ## Development server
